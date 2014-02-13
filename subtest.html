@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<!-- Created with Ai->Canvas Export Plug-In Version 1.1 (Mac)   -->
+<!-- By Mike Swanson (http://blog.mikeswanson.com/)             -->
+
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>subtest</title>
+  <script src="Ai2CanvasAnimation.js"></script>
+  <script>
+
+    // Main canvas and context references
+    var canvas;
+    var ctx;
+
+    // Frames per second
+    var fps = 60.0;
+
+    // Animations
+    var animations = [ new courbebulle() ];
+
+    function courbebulle() {
+
+      // Control and anchor points
+      this.points = [
+                    [ [680.9, 523.3], [680.9, 523.3], [277.5, 558.3], [90.0, 236.5] ],
+                    [ [590.9, 533.3], [590.9, 533.3], [187.5, 568.3], [0.0, 246.5] ],
+                    [ [712.9, 406.3], [712.9, 406.3], [309.5, 441.3], [122.0, 119.5] ],
+                    [ [600.9, 364.3], [600.9, 364.3], [197.5, 399.3], [10.0, 77.5] ],
+                    [ [600.9, 440.3], [600.9, 440.3], [197.5, 475.3], [10.0, 153.5] ]
+                    ];
+
+      // Linear motion index
+      this.linear = [
+                    [0, 0.00, 0.00], [0, 0.22, 0.01], [0, 0.31, 0.03], [0, 0.39, 0.04], 
+                    [0, 0.46, 0.06], [0, 0.53, 0.07], [0, 0.59, 0.09], [0, 0.65, 0.10], 
+                    [0, 0.71, 0.12], [0, 0.76, 0.13], [0, 0.82, 0.14], [0, 0.87, 0.16], 
+                    [0, 0.92, 0.17], [0, 0.96, 0.19], [1, 0.09, 0.20], [1, 0.24, 0.22], 
+                    [1, 0.33, 0.23], [1, 0.41, 0.25], [1, 0.48, 0.26], [1, 0.54, 0.28], 
+                    [1, 0.60, 0.29], [1, 0.66, 0.30], [1, 0.72, 0.32], [1, 0.77, 0.33], 
+                    [1, 0.83, 0.35], [1, 0.88, 0.36], [1, 0.93, 0.38], [1, 0.97, 0.39], 
+                    [2, 0.13, 0.41], [2, 0.26, 0.42], [2, 0.35, 0.43], [2, 0.42, 0.45], 
+                    [2, 0.49, 0.46], [2, 0.55, 0.48], [2, 0.62, 0.49], [2, 0.67, 0.51], 
+                    [2, 0.73, 0.52], [2, 0.78, 0.54], [2, 0.84, 0.55], [2, 0.89, 0.57], 
+                    [2, 0.94, 0.58], [2, 0.98, 0.59], [3, 0.16, 0.61], [3, 0.28, 0.62], 
+                    [3, 0.36, 0.64], [3, 0.44, 0.65], [3, 0.50, 0.67], [3, 0.57, 0.68], 
+                    [3, 0.63, 0.70], [3, 0.68, 0.71], [3, 0.74, 0.72], [3, 0.79, 0.74], 
+                    [3, 0.85, 0.75], [3, 0.90, 0.77], [3, 0.94, 0.78], [3, 0.99, 0.80], 
+                    [4, 0.19, 0.81], [4, 0.30, 0.83], [4, 0.38, 0.84], [4, 0.45, 0.86], 
+                    [4, 0.52, 0.87], [4, 0.58, 0.88], [4, 0.64, 0.90], [4, 0.70, 0.91], 
+                    [4, 0.75, 0.93], [4, 0.80, 0.94], [4, 0.86, 0.96], [4, 0.91, 0.97], 
+                    [4, 0.95, 0.99], [4, 1.00, 1.00]
+                    ];
+
+      // Segment T boundaries
+      this.segmentT = [0.20, 0.40, 0.60, 0.80, 1.00];
+
+      this.lastValue = -1.0;
+      this.x = 0;
+      this.y = 0;
+      this.orientation = 0.0;
+      this.pathClock = new clock(1.00, 0.00, 1, false, 0, linear, this.linear.length - 1, 1.00, 0.0000);
+
+      // Update function
+      this.update = updatePath;
+    }
+
+    function init() {
+
+      // Set main canvas and context references
+      canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+
+      // Start animation clocks
+      animations[0].pathClock.start();
+
+      // Set animation timer
+      setInterval(drawFrame, (1000 / fps));
+    }
+
+    function updateAnimations() {
+
+      // Update animation paths  
+      var animationCount = animations.length;
+      for (var i = 0; i < animationCount; i++) {
+        animations[i].update();
+      }
+    }
+
+    function drawFrame() {
+
+      // Update animations
+      updateAnimations();
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(animations[0].x, animations[0].y);
+      bulle(ctx);
+      ctx.restore();
+
+      sousmarin(ctx);
+    }
+
+    function bulle(ctx) {
+
+      var alpha = ctx.globalAlpha;
+
+      // bulle/Path
+      ctx.save();
+      ctx.globalAlpha = alpha * 0.30;
+      ctx.beginPath();
+      ctx.moveTo(-70.7, -4.5);
+      ctx.bezierCurveTo(-70.7, 13.4, -56.3, 27.9, -38.5, 27.9);
+      ctx.bezierCurveTo(-20.7, 27.9, -6.3, 13.4, -6.3, -4.5);
+      ctx.bezierCurveTo(-6.3, -22.4, -20.7, -36.9, -38.5, -36.9);
+      ctx.bezierCurveTo(-56.3, -36.9, -70.7, -22.4, -70.7, -4.5);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(40, 170, 225)";
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(-70.7, -80.5);
+      ctx.bezierCurveTo(-70.7, -62.6, -56.3, -48.1, -38.5, -48.1);
+      ctx.bezierCurveTo(-20.7, -48.1, -6.3, -62.6, -6.3, -80.5);
+      ctx.bezierCurveTo(-6.3, -98.4, -20.7, -112.9, -38.5, -112.9);
+      ctx.bezierCurveTo(-56.3, -112.9, -70.7, -98.4, -70.7, -80.5);
+      ctx.closePath();
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(-80.7, 88.5);
+      ctx.bezierCurveTo(-80.7, 106.4, -66.3, 120.9, -48.5, 120.9);
+      ctx.bezierCurveTo(-30.7, 120.9, -16.3, 106.4, -16.3, 88.5);
+      ctx.bezierCurveTo(-16.3, 70.6, -30.7, 56.1, -48.5, 56.1);
+      ctx.bezierCurveTo(-66.3, 56.1, -80.7, 70.6, -80.7, 88.5);
+      ctx.closePath();
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(9.3, 78.5);
+      ctx.bezierCurveTo(9.3, 96.4, 23.7, 110.9, 41.5, 110.9);
+      ctx.bezierCurveTo(59.3, 110.9, 73.7, 96.4, 73.7, 78.5);
+      ctx.bezierCurveTo(73.7, 60.6, 59.3, 46.1, 41.5, 46.1);
+      ctx.bezierCurveTo(23.7, 46.1, 9.3, 60.6, 9.3, 78.5);
+      ctx.closePath();
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(-63.7, -12.5);
+      ctx.bezierCurveTo(-63.7, 5.4, -49.3, 19.9, -31.5, 19.9);
+      ctx.bezierCurveTo(-13.7, 19.9, 0.7, 5.4, 0.7, -12.5);
+      ctx.bezierCurveTo(0.7, -30.4, -13.7, -44.9, -31.5, -44.9);
+      ctx.bezierCurveTo(-49.3, -44.9, -63.7, -30.4, -63.7, -12.5);
+      ctx.closePath();
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(-63.7, -88.5);
+      ctx.bezierCurveTo(-63.7, -70.6, -49.3, -56.1, -31.5, -56.1);
+      ctx.bezierCurveTo(-13.7, -56.1, 0.7, -70.6, 0.7, -88.5);
+      ctx.bezierCurveTo(0.7, -106.4, -13.7, -120.9, -31.5, -120.9);
+      ctx.bezierCurveTo(-49.3, -120.9, -63.7, -106.4, -63.7, -88.5);
+      ctx.closePath();
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(-73.7, 80.5);
+      ctx.bezierCurveTo(-73.7, 98.4, -59.3, 112.9, -41.5, 112.9);
+      ctx.bezierCurveTo(-23.7, 112.9, -9.3, 98.4, -9.3, 80.5);
+      ctx.bezierCurveTo(-9.3, 62.6, -23.7, 48.1, -41.5, 48.1);
+      ctx.bezierCurveTo(-59.3, 48.1, -73.7, 62.6, -73.7, 80.5);
+      ctx.closePath();
+      ctx.fill();
+
+      // bulle/Path
+      ctx.beginPath();
+      ctx.moveTo(16.3, 70.5);
+      ctx.bezierCurveTo(16.3, 88.4, 30.7, 102.9, 48.5, 102.9);
+      ctx.bezierCurveTo(66.3, 102.9, 80.7, 88.4, 80.7, 70.5);
+      ctx.bezierCurveTo(80.7, 52.6, 66.3, 38.1, 48.5, 38.1);
+      ctx.bezierCurveTo(30.7, 38.1, 16.3, 52.6, 16.3, 70.5);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function sousmarin(ctx) {
+
+      // sousmarin/Path
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(1627.9, 441.4);
+      ctx.bezierCurveTo(1627.9, 583.2, 1406.1, 698.1, 1132.4, 698.1);
+      ctx.bezierCurveTo(858.7, 698.1, 636.8, 583.2, 636.8, 441.4);
+      ctx.bezierCurveTo(636.8, 299.7, 858.7, 184.8, 1132.4, 184.8);
+      ctx.bezierCurveTo(1406.1, 184.8, 1627.9, 299.7, 1627.9, 441.4);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(255, 255, 0)";
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(712.4, 442.6);
+      ctx.bezierCurveTo(712.4, 556.7, 675.6, 649.2, 630.1, 649.2);
+      ctx.bezierCurveTo(584.7, 649.2, 547.9, 556.7, 547.9, 442.6);
+      ctx.bezierCurveTo(547.9, 328.4, 584.7, 235.9, 630.1, 235.9);
+      ctx.bezierCurveTo(675.6, 235.9, 712.4, 328.4, 712.4, 442.6);
+      ctx.closePath();
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(972.4, 413.7);
+      ctx.bezierCurveTo(972.4, 450.5, 937.5, 480.3, 894.6, 480.3);
+      ctx.bezierCurveTo(851.6, 480.3, 816.8, 450.5, 816.8, 413.7);
+      ctx.bezierCurveTo(816.8, 376.8, 851.6, 347.0, 894.6, 347.0);
+      ctx.bezierCurveTo(937.5, 347.0, 972.4, 376.8, 972.4, 413.7);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(62, 168, 244)";
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(1359.0, 424.8);
+      ctx.bezierCurveTo(1359.0, 467.7, 1310.8, 502.6, 1251.3, 502.6);
+      ctx.bezierCurveTo(1191.7, 502.6, 1143.5, 467.7, 1143.5, 424.8);
+      ctx.bezierCurveTo(1143.5, 381.8, 1191.7, 347.0, 1251.3, 347.0);
+      ctx.bezierCurveTo(1310.8, 347.0, 1359.0, 381.8, 1359.0, 424.8);
+      ctx.closePath();
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(1612.4, 384.8);
+      ctx.bezierCurveTo(1612.4, 416.7, 1580.0, 442.6, 1540.1, 442.6);
+      ctx.bezierCurveTo(1500.3, 442.6, 1467.9, 416.7, 1467.9, 384.8);
+      ctx.bezierCurveTo(1467.9, 352.9, 1500.3, 327.0, 1540.1, 327.0);
+      ctx.bezierCurveTo(1580.0, 327.0, 1612.4, 352.9, 1612.4, 384.8);
+      ctx.closePath();
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(1283.0, 248.0);
+      ctx.bezierCurveTo(1283.0, 256.3, 1276.3, 263.0, 1268.0, 263.0);
+      ctx.lineTo(1007.0, 263.0);
+      ctx.bezierCurveTo(998.7, 263.0, 992.0, 256.3, 992.0, 248.0);
+      ctx.lineTo(992.0, 131.0);
+      ctx.bezierCurveTo(992.0, 122.7, 998.7, 116.0, 1007.0, 116.0);
+      ctx.lineTo(1268.0, 116.0);
+      ctx.bezierCurveTo(1276.3, 116.0, 1283.0, 122.7, 1283.0, 131.0);
+      ctx.lineTo(1283.0, 248.0);
+      ctx.closePath();
+      ctx.fillStyle = "rgb(255, 255, 0)";
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(1143.0, 161.0);
+      ctx.bezierCurveTo(1143.0, 169.3, 1136.3, 176.0, 1128.0, 176.0);
+      ctx.lineTo(1125.0, 176.0);
+      ctx.bezierCurveTo(1116.7, 176.0, 1110.0, 169.3, 1110.0, 161.0);
+      ctx.lineTo(1110.0, 33.0);
+      ctx.bezierCurveTo(1110.0, 24.7, 1116.7, 18.0, 1125.0, 18.0);
+      ctx.lineTo(1128.0, 18.0);
+      ctx.bezierCurveTo(1136.3, 18.0, 1143.0, 24.7, 1143.0, 33.0);
+      ctx.lineTo(1143.0, 161.0);
+      ctx.closePath();
+      ctx.fill();
+
+      // sousmarin/Path
+      ctx.beginPath();
+      ctx.moveTo(1186.0, 32.0);
+      ctx.bezierCurveTo(1186.0, 40.3, 1179.3, 47.0, 1171.0, 47.0);
+      ctx.lineTo(1125.0, 47.0);
+      ctx.bezierCurveTo(1116.7, 47.0, 1110.0, 40.3, 1110.0, 32.0);
+      ctx.lineTo(1110.0, 15.0);
+      ctx.bezierCurveTo(1110.0, 6.7, 1116.7, 0.0, 1125.0, 0.0);
+      ctx.lineTo(1171.0, 0.0);
+      ctx.bezierCurveTo(1179.3, 0.0, 1186.0, 6.7, 1186.0, 15.0);
+      ctx.lineTo(1186.0, 32.0);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+    
+   
+
+  </script>
+ </head>
+ <body onload="init()">
+ 	   <canvas id="canvas" width="1628" height="699"></canvas>
+ </body>
+</html>
