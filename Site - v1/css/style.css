@@ -1,6 +1,6 @@
 body{
 	
-	background: -webkit-linear-gradient(#9cc9ff 0%, #b8d5ff 13.44%, #faffc4 88.08%);
+	background: #fff;
 	font-family: 'Open Sans', sans-serif;
 }
 #container{
@@ -20,8 +20,6 @@ p{
 }
 header h1{
 	text-align: center;
-	font-size: 3em;
-	color: #fff;
 }
 header{
 	overflow: hidden;
@@ -60,7 +58,7 @@ header .vaguemove{
 @-webkit-keyframes vaguemove
 {
 	from{left: 0; }
-	to{left: -77px; }
+	to{left: 77px; }
 }
 @-webkit-keyframes vague
 {
@@ -132,22 +130,20 @@ footer{
 	margin: 0;
 }
 #bateau {
-	width: 520px;
+	width: 500px;
 	height: 200px;
 	position: relative;
-	top: -88px;
+	top: 88px;
 	left: 50%;
-	margin-left: -300px;
-	z-index: 10;
+	margin-left: -250px;
 }
 #bateau .bat{
-	width: 640px;
-	height: 380px;
+	width: 500px;
+	height: 200px;
 	position: absolute;
 	z-index: 10;
 	-webkit-transform: rotate(3deg);
-	background: url(../images/bateau2.png) no-repeat center center;
-	background-size: cover;
+	background: url(../images/bateau.png) no-repeat center center;
 	-webkit-animation: movebat 3s infinite alternate ease-in-out;
 }
 @-webkit-keyframes movebat{
@@ -159,7 +155,7 @@ footer{
 	}
 }
 #bateau #grue{
-	/* background: url(../images/grue.png) no-repeat center center; */
+	background: url(../images/grue.png) no-repeat center center;
 	width: 50px;
 	height: 200px;
 	left: 50%;
@@ -170,14 +166,14 @@ footer{
 #sub{
 	height: 200px;
 	width: 300px;
-	position: absolute;
+	position: fixed;
 	margin-left: -150px;
 	margin-top: -100px;
 	left: 50%;
-	top: 524px;
+	top: 390px;
 	z-index: 1000;
 
-	transition: top .3s ease-out;
+	transition: top .01s linear;
 }
 #sub .sub{
 	background: url(../images/submarine_01.2.png) center center no-repeat;
@@ -188,11 +184,7 @@ footer{
 	left: 75px;
 	top: 50px;
 	animation: submove 14s infinite;
-	-webkit-animation: submove 5s infinite alternate linear;
-}
-#sub .sub.wb{
-	-webkit-animation: submovebat 7s infinite alternate linear;
-	
+	-webkit-animation: submove 7s infinite alternate linear;
 }
 @-webkit-keyframes submove{
 	from{	
@@ -236,49 +228,6 @@ footer{
 		top: 60px;
 	}
 }
-@-webkit-keyframes submovebat{
-	from{	
-		left: 70px;
-		top: 50px;
-	}
-	10%{	
-		left: 70px;
-		top: 48px;
-	}
-	20%{	
-		left: 72px;
-		top: 50px;
-	}
-	30%{	
-		left: 71px;
-		top: 51px;
-	}
-	40%{	
-		left: 72px;
-		top: 48px;
-	}
-	60%{	
-		left: 70px;
-		top: 49px;
-	}
-	70%{	
-		left: 72px;
-		top: 51px;
-	}
-	80%{	
-		left: 71px;
-		top: 50px;
-	}
-	90%{	
-		left: 73px;
-		top: 52px;
-	}
-	to{	
-		left: 75px;
-		top: 54px;
-	}
-}
-
 #sub .bulle{
 	width: 10px;
 	height: 10px;
