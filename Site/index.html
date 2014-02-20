@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Crazy Submarine</title>
+		<title>CrazySub</title>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/libs/animate.css">
         <link rel="stylesheet" type="text/css" href="css/normalize.css" /> 
         <link rel="stylesheet" type="text/css" href="css/style.css" /> 
+        
 		<link rel="shortcut icon" type="image/png" href="favicon.png" />
   		<link rel="icon" type="image/png" href="favicon.png" />
-  		<script type="text/javascript" src="js/modernizr.js"></script>
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
   		<script type="text/javascript" src="js/jquery.js"></script>
   		<script type="text/javascript" src="js/script.js"></script>
   		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,800italic,400,300,700' rel='stylesheet' type='text/css'>
 
 	</head>
 	<body>
+		<a href="game.html"><button class="btndl">Essayer le!</button></a>
 		<header>
+		<div id="nuages">
+			<!--
+<div class="nuage" style="top: 100px;"></div>
+			<div class="nuage" style="top: 200px;"></div>
+-->
+		</div>
 			<div class="inner">
-				<h1>Crazy Submarine</h1>
+				<h1>CrazySub</h1>
 			</div>
 			<div id="bateau">
 				<div id="grue"></div>
@@ -24,7 +33,7 @@
 			</div>
 			<div class="vaguemove"><div id="vague"></div></div>
 			<div id="eauhead"></div>
-			
+			<div id="ecum" class="movetoleft"></div>
 			
 		</header>
 		<div id="sub">
@@ -38,34 +47,44 @@
 		<div id="container">
 			<div id="content">
 				<div class="bloc">
-					<div class="col">
+					<div class="col  section--blue wow fadeInDown">
 						<h1>À propos</h1>
-						<p>Crazy submarine est un jeux de plateforme qui nous plonge dans un univers sous marin des plus "crazy". Le but du jeux est d'explorer le plus de fonds marins possible.</p>
+						<p>CrazySub est un jeux de plateforme qui nous plonge dans un univers sous marin des plus "crazy". Le but du jeux est d'explorer le plus de fonds marins possible.</p>
 					</div>
-					<img class="col smarthphone" src="images/smrtp.png"/>
+					<div class="col smarthphone section--blue wow fadeInUp"  data-wow-offset="300">
+						<img src="images/smrtp.png"/>
+					</div>
 				</div>
 				<div class="bloc">
-					
-					<img class="col smarthphone" src="images/vid.png"/>
-					<div class="col">
+					<div class="col smarthphone section--blue wow fadeInLeft">
+						<video width="100%" height="auto" controls>
+						  <source src="videos/teaser.mp4" type="video/mp4">
+						  <source src="teaser.ogg" type="video/ogg">
+						Your browser does not support the video tag.
+						</video>
+					</div>
+					<div class="col section--blue wow fadeInRight">
 						<h1>Teaser</h1>
-						<p>Crazy submarine est un jeux de plateforme qui nous plonge dans un univers sous marin des plus "crazy". Le but du jeux est d'explorer le plus de fonds marins possible.</p>
+						<p><strong>Plongez</strong> dès maintenant dans l'aventure CrazySub et évitez tous les obstacles des fonds marins. Irez-vous plus loin que vos amis?</p>
 					</div>
 				</div>
 				<div class="bloc">
 					
-					<div class="col">
+					<div class="col section--blue wow fadeInDown">
 						<h1>Crédits</h1>
-						<p>Crazy submarine est un jeux de plateforme qui nous plonge dans un univers sous marin des plus "crazy". Le but du jeux est d'explorer le plus de fonds marins possible.</p>
+						<p>Le projet CrazySub a été créé dans le cadre du workshop iLab des 3eme année de webdesign a la haute école Albert Jaquard de Namur. Ce projet a été réalisé par l'équipe Machintruc qui est composé de <a href="http://www.stanleylambot.be" target="_blank">Stanley Lambot</a>, <a href="http://www.dekoh.eu" target="_blank">Denis Kohlman</a> et <a href="http://www.jeromerenders.be" target="_blank">Jérome Renders</a></p>
 					</div>
-					<img class="col smarthphone" src="images/vid.png"/>
+					<div class="col smarthphone">
+					 	<!-- <img src="images/vid.png"/> -->
+					</div>
 				</div>
 				<div class="bloc">
-					
-					<img class="col smarthphone" src="images/smrtp.png"/>
-					<div class="col">
+					<div class="col smarthphone">
+						<!-- <img src="images/smrtp.png"/> -->
+					</div>
+					<div class="col section--blue wow fadeInUp">
 						<h1>Plan d'avenir</h1>
-						<p>Crazy submarine est un jeux de plateforme qui nous plonge dans un univers sous marin des plus "crazy". Le but du jeux est d'explorer le plus de fonds marins possible.</p>
+						<p>CrazySub promet de gagner plein de labcoins grâce aux investisseurs méritant.</p>
 					</div>
 				</div>
 			</div>
@@ -73,6 +92,32 @@
 		<footer>
 			<div id="fond"></div>
 		</footer>
-		
+		<nav>
+			<ul id="weather">
+				<li id="auto" class="active"><span>Auto</span></li>
+				<li id="clickday"><span>Day</span></li>
+				<li id="clickcrep"><span>Crepuscule</span></li>
+				<li id="clicknight"><span>Night</span></li>
+				<li id="clickaube"><span>Aube</span></li>
+			</ul>
+			<ul id="subs">
+				<li id="BasicYellowSub"><span>BasicYellowSub</span></li>
+				<li id="LightingStrike" class="active"><span>LightingStrike</span></li>
+				<li id="redFlames"><span>redFlames</span></li>
+				<li id="submarine_04_MT-19214"><span>submarine_04_MT-19214</span></li>
+			</ul>
+		</nav>
+		<script src="js/wow.js"></script>
+  <script>
+    wow = new WOW(
+      {
+        animateClass: 'animated',
+        offset:       100
+      }
+    );
+    wow.init();
+  </script>
+  		<script type="text/javascript" src="js/modernizr.js"></script>
+
 	</body>
 </html>

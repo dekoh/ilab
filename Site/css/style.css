@@ -1,32 +1,192 @@
 body{
 	
-	background: -webkit-linear-gradient(#9cc9ff 0%, #b8d5ff 13.44%, #faffc4 88.08%);
 	font-family: 'Open Sans', sans-serif;
 }
 #container{
 	background: rgba(51,165,199,0.79);
-	background: -webkit-linear-gradient(rgba(51,165,199,0.8) 0%, #005272 100%);
+	background: linear-gradient(#005272 0%, #004865 100%);
+	background: -webkit-linear-gradient(#005272 0%, #004865 100%);
+	background: -moz-linear-gradient(#005272 0%, #004865 100%);
+	background: -o-linear-gradient(#005272 0%, #004865 100%);
+	background: -ms-linear-gradient(#005272 0%, #004865 100%);
 	overflow: hidden;
 	position: relative;
 	color: #fff;
 	z-index: 100;
+	margin-top: -100px;
+}
+a{
+	color: #97c9ff;
+}
+a:hover{
+	color: #63aeff;
+}
+a:active{
+	color: #007cff;
 }
 p{
 	line-height: 2em;
+}
+nav{
+	position: fixed;
+	z-index: 3000;
+	top: 0;
+	width: 100%;
+}
+#weather{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border-radius: 0px 0px 5px 0px;
+}
+#weather li span{
+	padding: 10px 10px 10px 43px;
+	display: block;
+	text-indent: -9999px;
+}
+#weather li:hover{/*
+
+	background: linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+	background: -webkit-linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+*/
+	opacity: .5;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+}
+#weather li.active{/*
+
+	background: linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+	background: -webkit-linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+*/
+	opacity: .5;
+	box-shadow: inset 0px 0px 20px -12px black;
+	border-radius: 5px;
+}
+#clickday span{
+	background: url(../images/sun.png) no-repeat  center;
+	background-size: 40px;
+}
+#clicknight span{
+	background: url(../images/moon.png) no-repeat center;
+	background-size: 40px;
+}
+#clickcrep span{
+	background: url(../images/crep.png) no-repeat  center;
+	background-size: 40px;
+}
+#clickaube span{
+	background: url(../images/aube.png) no-repeat  center;
+	background-size: 40px;
+}
+#auto span{
+	background: url(../images/auto.png) no-repeat  center;
+	background-size: 40px;
+}
+#subs{
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	float: right;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border-radius: 0px 0px 0px 5px;
+}
+#subs li, #weather li{
+	cursor: pointer;
+	float: left;
+	/*
+background: linear-gradient(#ededed 0%, #cccccc 55.3%);
+	background: -webkit-linear-gradient(#ededed 0%, #cccccc 55.3%);
+*/
+	transition: all .1s ease-in;
+	-webkit-transition: all .2s ease-in;
+}
+#subs li span{
+	padding: 10px 10px 10px 40px;
+	text-indent: -9999px;
+	width: 10px;
+	display: block;
+}
+#subs li:hover{
+	/*
+background: linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+	background: -webkit-linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+*/
+	opacity: .5;
+	-webkit-transition: all .3s ease-in;
+	transition: all .2s ease-in;
+}
+#subs li.active{
+	/*
+
+	background: linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+	background: -webkit-linear-gradient(#d7d7d7 0%, #b7b7b7 55.3%);
+*/
+	
+	border-radius: 5px;
+	box-shadow: inset 0px 0px 20px -12px black;
+}
+#submarine_04_MT-19214 span{
+	background: url(../images/submarine_04_MT-19214.png) no-repeat  center;
+	background-size: 60px;
+}
+#LightingStrike span{
+	background: url(../images/submarine_01_LightingStrike.png) no-repeat  center;
+	background-size: 50px;
+}
+#redFlames span{
+	background: url(../images/submarine_02_redFlames.png) no-repeat center;
+	background-size: 50px;
+}
+#BasicYellowSub span{
+	background: url(../images/submarine_03_BasicYellowSub.png) no-repeat center;
+	background-size: 50px;
 }
 #content,header .inner{
 	width: 1024px;
 	margin: 0 auto;
 }
+img{
+		width: 100%;
+	}
 header h1{
 	text-align: center;
 	font-size: 3em;
 	color: #fff;
+	text-indent: -9999px;
+	margin-top: -420px;
+	margin-bottom: -100px;
+	height: 400px;
+	background: url(../images/heade.png) no-repeat center top;
+	background-size: 800px;
 }
 header{
 	overflow: hidden;
-	height: 356px;
-	padding-top: 260px;
+	height: 1156px;
+	transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+	background: linear-gradient(#5c90cb 0%, #c2dbff 63.44%, #def1c3 100%);
+	background: -webkit-linear-gradient(#5c90cb 0%, #c2dbff 63.44%, #def1c3 100%);
+}
+header.night{
+	background: linear-gradient(#1c1c1c 0%, #525252 57.68%);
+}
+header.crepuscule{
+	background: linear-gradient(#2a629d 0%, #f8a3ff 81.79%);
+}
+header.day{
+	background: linear-gradient(#5c90cb 0%, #c2dbff 63.44%, #def1c3 100%);
+}
+header.aube{
+	background: linear-gradient(top, #00aeff 0%,#ed9017 60%);
 }
 header #vaguefond{
 	background: url(../images/vagf.png) repeat-x;
@@ -34,33 +194,120 @@ header #vaguefond{
 	width: 100%;
 }
 header #vague{
-	width: 120%;
+	width: 4000px;
 	position: relative;
 	left: -10%;
-	height: 10px;
-	background: url(../images/vag2.png) repeat-x top;
-	background-size: 73px;
+	height: 600px;
+	/* top: 200px; */
+	background: url(../images/mer.png) repeat-x top;
+	/*background-size: 73px;
+
 	-webkit-animation: vague2 1s infinite alternate linear;
+*/
 }
 header #eauhead{
 	background: rgba(51,165,199,0.8);
 	height: 61px;
 	width: 100%;
+	/* top: 200px; */
 	position: relative;
 	z-index: 12;
+}
+#ecum{
+	position: relative;
+	height: 30px;
+	width: 130%;
+	display: none;
+	background: url(../images/ecum.png) repeat-x;
+	top: -70px;
+	z-index: 130;
+	-webkit-animation: ecum 15s infinite linear;
+}
+#nuages{
+	position: relative;
+	overflow: hidden;
+	height: 500px;
+	width: 100%;
+	margin-bottom: -240px;
+}
+.nuage{
+	position: absolute;
+	height: 100px;
+	width: 200px;
+	display: block;
+	background: url(../images/nuage.png) repeat-x;
+	background-size: cover;/*
+
+	-webkit-transform: translate(1900px, 100px);
+*/
+	-webkit-transition: opacity .5s ease-in-out;
+	-webkit-transition: translate 5s linear;
+	z-index: 10;
+	/* -webkit-animation: movetoleft 55s infinite linear; */
+}
+
+.star{
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	display: block;
+	background: radial-gradient(#ffffff 0%, rgba(255,255,255,0) 52.19%);
+	background: -webkit-radial-gradient(#ffffff 0%, rgba(255,255,255,0) 52.19%);
+	z-index: 9;
+	opacity: .7;
+	}
+.shining{
+	-webkit-animation: etoile .4s infinite alternate linear;
+}
+@-webkit-keyframes etoile
+{
+	from{opacity: .9; }
+	to{opacity: .5; }
+}
+.poisson{
+	position: absolute;
+	height: 100px;
+	width: 200px;
+	display: block;
+	background: url(../images/poisson.png) repeat-x;
+	background-size: cover;
+	z-index: 110;
+}
+.nuage2{
+	position: absolute;
+	height: 100px;
+	width: 200px;
+	background: url(../images/nuage.png) repeat-x;
+	background-size: cover;
+	z-index: 11;
+	-webkit-animation: movetoleft2 55s infinite linear;
 }
 header .vaguemove{
 	position: relative;
 	top: 1px;
 	z-index: 12;
-	animation: vaguemove 2s infinite;
-	-webkit-animation: vaguemove 4s infinite linear;
+	animation: vaguemove 74s infinite linear;
+	-webkit-animation: vaguemove 74s infinite linear;
 }
-
+@keyframes ecum
+{
+	from{left: 0px; }
+	to{left: -336px; }
+}
+@-webkit-keyframes ecum
+{
+	from{left: 0px; }
+	to{left: -336px; }
+}
+@keyframes vaguemove
+{
+	from{left: 0; }
+	to{left: -1920px; }
+}
 @-webkit-keyframes vaguemove
 {
 	from{left: 0; }
-	to{left: -77px; }
+	to{left: -1920px; }
 }
 @-webkit-keyframes vague
 {
@@ -112,43 +359,59 @@ header .vaguemove{
 }
 
 footer{
-	height: 500px;
-	background: #005272;
+	height: 200px;
+	background: #004865;
 }
 #fond{
-	background: url(../images/sol.png) repeat-x;
+	background: url(../images/sol2.png) repeat-x;
 	width: 100%;
-	height: 300px;
+	height: 350px;
 	position: relative;
-	top: 200px;
+	top: -100px;
 }
 .col{
 	width: 40%;
 	margin-left: 20%;
 	float: left;
-	min-height: 400px;
+	min-height: 600px;
 }
 .col:first-child{
 	margin: 0;
+}
+.bloc{
+	
+	overflow: hidden;
+	position: relative;
+	z-index: 120;
 }
 #bateau {
 	width: 520px;
 	height: 200px;
 	position: relative;
-	top: -88px;
+	top: -130px;
 	left: 50%;
-	margin-left: -300px;
+	margin-left: -330px;
 	z-index: 10;
 }
 #bateau .bat{
-	width: 640px;
-	height: 380px;
+	width: 690px;
+	height: 510px;
 	position: absolute;
 	z-index: 10;
+	transform: rotate(3deg);
 	-webkit-transform: rotate(3deg);
-	background: url(../images/bateau2.png) no-repeat center center;
+	background: url(../images/bateau3.png) no-repeat center center;
 	background-size: cover;
+	animation: movebat 3s infinite alternate ease-in-out;
 	-webkit-animation: movebat 3s infinite alternate ease-in-out;
+}
+@keyframes movebat{
+	from{	
+		transform: rotate(1.4deg);
+	}
+	to{
+		transform: rotate(-1.6deg);
+	}
 }
 @-webkit-keyframes movebat{
 	from{	
@@ -180,7 +443,7 @@ footer{
 	transition: top .3s ease-out;
 }
 #sub .sub{
-	background: url(../images/submarine_01.2.png) center center no-repeat;
+	background: url(../images/submarine_01_LightingStrike.png) center center no-repeat;
 	background-size: 150px;
 	height: 100px;
 	width: 150px;
@@ -191,8 +454,93 @@ footer{
 	-webkit-animation: submove 5s infinite alternate linear;
 }
 #sub .sub.wb{
+	animation: submovebat 7s infinite alternate linear;
 	-webkit-animation: submovebat 7s infinite alternate linear;
 	
+}
+@keyframes submove{
+	from{	
+		left: 70px;
+		top: 50px;
+	}
+	10%{	
+		left: 70px;
+		top: 45px;
+	}
+	20%{	
+		left: 75px;
+		top: 50px;
+	}
+	30%{	
+		left: 80px;
+		top: 55px;
+	}
+	40%{	
+		left: 80px;
+		top: 60px;
+	}
+	60%{	
+		left: 75px;
+		top: 55px;
+	}
+	70%{	
+		left: 80px;
+		top: 55px;
+	}
+	80%{	
+		left: 75px;
+		top: 60px;
+	}
+	90%{	
+		left: 80px;
+		top: 65px;
+	}
+	to{	
+		left: 85px;
+		top: 60px;
+	}
+}
+@keyframes submovebat{
+	from{	
+		left: 70px;
+		top: 50px;
+	}
+	10%{	
+		left: 70px;
+		top: 48px;
+	}
+	20%{	
+		left: 72px;
+		top: 50px;
+	}
+	30%{	
+		left: 71px;
+		top: 51px;
+	}
+	40%{	
+		left: 72px;
+		top: 48px;
+	}
+	60%{	
+		left: 70px;
+		top: 49px;
+	}
+	70%{	
+		left: 72px;
+		top: 51px;
+	}
+	80%{	
+		left: 71px;
+		top: 50px;
+	}
+	90%{	
+		left: 73px;
+		top: 52px;
+	}
+	to{	
+		left: 75px;
+		top: 54px;
+	}
 }
 @-webkit-keyframes submove{
 	from{	
@@ -293,16 +641,38 @@ footer{
 	-webkit-animation: bulle 2s infinite linear;
 }
 #sub .bulle:nth-child(2){
+	animation: bulle2 1.4s infinite;
 	-webkit-animation: bulle2 1.4s infinite;
 	
 }
 #sub .bulle:nth-child(3){
+	animation: bulle2 1.8s infinite;
 	-webkit-animation: bulle2 1.8s infinite;
 	
 }
 #sub .bulle:nth-child(4){
+	animation: bulle 2.1s infinite;
 	-webkit-animation: bulle 2.1s infinite;
 	
+}
+@keyframes bulle{
+	from{
+		left: 120px;
+		top: 145px;
+		opacity: 1;
+	}
+	20%{
+		top: 90px;
+		left: 60px;
+	}
+	40%{
+		opacity: 1;
+	}
+	100%{
+		left: 20px;
+		top: 20px;
+		opacity: 0;
+	}
 }
 @-webkit-keyframes bulle{
 	from{
@@ -340,5 +710,143 @@ footer{
 		left: 20px;
 		top: 20px;
 		opacity: 0;
+	}
+}
+@keyframes movetoleft{
+	0%{
+		left: 1200px;
+		opacity: 0;
+	}
+	5%{
+		opacity: 1;
+	}
+	95%{
+		opacity: 1;
+	}
+	100%{
+		left: -40px;
+		opacity: 0;
+	}
+}
+@-webkit-keyframes movetoleft{
+	0%{
+		left: 1200px;
+		opacity: 0;
+	}
+	5%{
+		opacity: 1;
+	}
+	95%{
+		opacity: 1;
+	}
+	100%{
+		left: -40px;
+		opacity: 0;
+	}
+}
+@-webkit-keyframes movetoleft2{
+	0%{
+		left: 1000px;
+		opacity: 1;
+	}
+	55%{
+		left: -40px;
+		opacity: 0;
+	}
+	55.01%{
+		left: 1200px;
+		opacity: 0;
+	}
+	
+	60%{
+		opacity: 1;
+	}
+	100%{
+		left: 1000px;
+		opacity: 1;
+	}
+}
+.btndl{
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: absolute;
+	left: 50%;
+	top: 840px;
+	width: 400px;
+	margin-left: -200px;
+	z-index: 100;
+	display: block;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	background: #2599ff;
+	color: #fff;
+	padding: 25px 80px 25px 80px;
+	border-radius: 5px;
+	opacity: .6;
+}
+.btndl:hover {
+	background: #4aabff;
+}
+.btndl:active {
+	background:#1478ce;
+}
+@media all and (max-width: 1024px) {
+	#content,header .inner {
+		width: 100%;
+	}
+	header h1{
+		font-size: 3em;
+		line-height: 1.5em;
+	}
+}
+@media all and (max-width: 824px) {
+	.col{
+		width: 80%;
+		padding: 10%;
+		min-height: inherit;
+		margin: 0;
+	}
+	
+}
+@media all and (max-width: 600px) {
+	header h1{
+		background-size: 400px;
+		height: 300px;
+	}
+	#bateau, #sub{
+		transform: scale(.8);
+		-webkit-transform: scale(.8);
+	}	
+	#bateau{
+		top: -48px;
+	}
+	#subs{
+		top: auto;
+		bottom: 0px;
+		position: fixed;
+		width: 100%;
+		z-index: 10000;
+	}
+	#subs li{
+		width: 25%;
+	}
+	#sub{
+		top: 439px;
+	}
+	#weather{
+		width: 101%;
+		border-radius: 0;
+	}
+	#weather li{
+		width: 20%;
 	}
 }
