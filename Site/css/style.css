@@ -363,11 +363,10 @@ footer{
 	background: #004865;
 }
 #fond{
-	background: url(../images/sol2.png) repeat-x;
+	background: url(../images/sol3.png) repeat-x;
 	width: 100%;
-	height: 350px;
+	height: 250px;
 	position: relative;
-	top: -100px;
 }
 .col{
 	width: 40%;
@@ -798,6 +797,47 @@ footer{
 }
 .btndl:active {
 	background:#1478ce;
+}
+.mine{
+	width: 120px;
+	height: 120px;
+	background: url(../images/mine.png) no-repeat;
+	background-size: cover;
+}
+.life{
+	width: 120px;
+	height: 120px;
+	background: url(../images/life.png) no-repeat;
+	background-size: cover;
+}
+.missile{
+	width: 120px;
+	height: 120px;
+	background: url(../images/missile.png) no-repeat;
+	background-size: cover;
+	
+	transform: translate( 250px, 100px);
+	-webkit-transform: translate( 250px, 100px);
+}
+.baril{
+	width: 60px;
+	height: 66px;
+	background: url(../images/baril.png) no-repeat;
+	background-size: cover;
+	transform: translate( 50px, 200px);
+	-webkit-transform: translate( 50px, 200px);
+}
+.shark{
+	width: 100px;
+	height: 46px;
+	background: url(../images/shark.png) no-repeat;
+	background-size: cover;
+	transform: translate( 150px, 100px);
+	-webkit-transform: translate( 150px, 100px);
+}
+.mine:last-child{
+	transform: translate( 150px, 0px);
+	-webkit-transform: translate( 150px, 0px);
 }
 @media all and (max-width: 1024px) {
 	#content,header .inner {
